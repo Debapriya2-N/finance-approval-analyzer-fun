@@ -1,0 +1,286 @@
+Save this as **index.html** and upload it to GitHub Pages.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Approval Analyzer</title>
+
+<style>
+
+body{
+    background:linear-gradient(135deg,#ffb6c1,#ffc0cb,#ffd1dc);
+    font-family:monospace;
+    text-align:center;
+    padding-top:80px;
+    margin:0;
+    overflow-x:hidden;
+}
+
+h1{
+    font-size:38px;
+    color:#d6336c;
+}
+
+#terminal{
+    width:70%;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    font-size:18px;
+    text-align:left;
+    min-height:250px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#start{
+    background:#ff4d6d;
+    color:white;
+}
+
+#yes{
+    background:#28a745;
+    color:white;
+}
+
+#no{
+    background:#6c757d;
+    color:white;
+}
+
+#comment{
+    margin-top:20px;
+    font-size:20px;
+    color:#444;
+    font-weight:bold;
+}
+
+.appreciation-box{
+    background:white;
+    max-width:850px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+    line-height:1.8;
+    color:#444;
+    font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Finance Approval Analyzer 💰</h1>
+
+<div id="terminal">
+System Ready...<br>
+Click Start to Analyze Advance Payment Request.
+</div>
+
+<button id="start">Run Analysis 🚀</button>
+
+<div id="comment"></div>
+
+<script>
+
+const terminal = document.getElementById("terminal");
+const startBtn = document.getElementById("start");
+
+const lines = [
+
+"Initializing Finance Analysis...",
+
+"Connecting to Seventh Sense Talent Solution...",
+
+"Employee Identified: Aswini",
+"Department: Finance 💰",
+
+"Analyzing Advance Payment Request...",
+"Checking Approval Status...",
+"Verifying Budget Allocation...",
+"Reviewing Request History...",
+
+"Processing...",
+"Processing...",
+"Processing...",
+
+"RESULT GENERATED",
+
+"Advance Request Status: Awaiting Approval",
+"Request Priority: High",
+
+"Finance Review Status: Active",
+"Budget Verification: Completed",
+
+"System Observation:",
+"The request has been successfully submitted.",
+"The employee remains optimistic 😄",
+
+"Generating Recommendation...",
+
+"Recommendation:",
+"Kindly consider releasing the advance payment.",
+
+"Final Review Complete."
+];
+
+let i = 0;
+
+startBtn.onclick = function(){
+
+    startBtn.style.display = "none";
+
+    const interval = setInterval(function(){
+
+        if(i < lines.length){
+
+            terminal.innerHTML += "<br>" + lines[i];
+            i++;
+
+        }else{
+
+            clearInterval(interval);
+
+            terminal.innerHTML += `
+
+            <br><br>
+
+            <b>Final Decision Request:</b>
+
+            <br><br>
+
+            Can the Advance Payment be Approved Today? 💸
+
+            <br><br>
+
+            <button id="yes">YES ✅</button>
+            <button id="no">UNDER REVIEW ⏳</button>
+
+            `;
+
+            setupButtons();
+        }
+
+    },800);
+
+};
+
+const funnyComments = [
+
+"Request is under review 😊",
+"Finance team is evaluating 🤔",
+"Please check again shortly ⏳",
+"Approval workflow in progress 📋",
+"Awaiting final confirmation 😄",
+"System recommends YES ✅",
+"Employee patience level decreasing 📉",
+"One more follow-up might help 😅"
+
+];
+
+let commentIndex = 0;
+
+function setupButtons(){
+
+    const noBtn = document.getElementById("no");
+    const comment = document.getElementById("comment");
+
+    noBtn.addEventListener("mouseover", function(){
+
+        const x = Math.random() * (window.innerWidth - 180);
+        const y = Math.random() * (window.innerHeight - 100);
+
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        comment.innerText =
+        funnyComments[commentIndex % funnyComments.length];
+
+        commentIndex++;
+
+    });
+
+    document.getElementById("yes").onclick = function(){
+
+        document.body.innerHTML = `
+
+        <div style="padding:60px 20px;">
+
+            <h1 style="color:#d6336c;">
+                🎉 Approval Confirmed 🎉
+            </h1>
+
+            <h2>
+                Advance Payment Approved 💸
+            </h2>
+
+            <p style="font-size:22px;">
+                Thank You, Aswini!
+            </p>
+
+            <div class="appreciation-box">
+
+                <h2 style="color:#d6336c;">
+                    A Small Note of Appreciation 🌸
+                </h2>
+
+                <p>
+                This analysis may have been created for a little fun,
+                but on a serious note, thank you for the dedication,
+                responsibility, and hard work you bring to
+                Seventh Sense Talent Solution every day.
+                </p>
+
+                <p>
+                Managing finance operations is not an easy task.
+                It requires patience, accuracy, commitment, and the
+                ability to handle multiple responsibilities at once.
+                Your professionalism and consistency help ensure that
+                everything runs smoothly behind the scenes.
+                </p>
+
+                <p>
+                Your efforts may not always be visible to everyone,
+                but they are certainly valued and appreciated.
+                Thank you for your support, cooperation, and positive
+                contribution to the team.
+                </p>
+
+                <p>
+                Wishing you continued success, happiness, and growth
+                in your career and personal journey.
+                </p>
+
+                <h3 style="color:#d6336c;">
+                    Thank You For Being A Valuable Part Of The Team ❤️
+                </h3>
+
+            </div>
+
+        </div>
+
+        `;
+    };
+
+}
+
+</script>
+
+</body>
+</html>
+```
